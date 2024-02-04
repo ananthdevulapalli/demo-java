@@ -1,17 +1,10 @@
-FROM tomcat:8.5
-MAINTAINER Tung Nguyen <tongueroo@gmail.com>
+FROM tomcat:8-jdk8-openjdk  # Replace with desired Tomcat version
 
-# Debugging tools: A few ways to handle debugging tools.
-# Trade off is a slightly more complex volume mount vs keeping the image size down.
-RUN apt-get update && \
-  apt-get install -y \
-    net-tools \
-    tree \
-    vim && \
-  rm -rf /var/lib/apt/lists/* && apt-get clean && apt-get purge
+# Copy the WAR file to the appropriate location
+COPY demo.war /usr/local/tomcat/webapps/
 
-RUN echo "export JAVA_OPTS=\"-Dapp.env=staging\"" > /usr/local/tomcat/bin/setenv.sh
-COPY pkg/demo.war /usr/local/tomcat/webapps/demo.war
-
+# Expose the Tomcat port
 EXPOSE 8080
+
+# Start Tomcat when the container runs
 CMD ["catalina.sh", "run"]
