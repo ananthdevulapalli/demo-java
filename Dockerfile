@@ -1,4 +1,4 @@
-FROM tomcat:7.0.59-jre7
+FROM tomcat:latest
 # Copy the WAR file to the appropriate location
 COPY demo.war /usr/local/tomcat/webapps/
 # Expose the Tomcat port
