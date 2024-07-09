@@ -21,6 +21,6 @@ public class Hello extends HttpServlet {
 
       // Actual logic goes here.
       PrintWriter out = response.getWriter();
-      out.println("<h1>" + message + "</h1>");
+      out.println("<h2>" + message + "</h2>");
    }
 }
