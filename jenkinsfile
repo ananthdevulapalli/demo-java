@@ -32,8 +32,8 @@ pipeline {
                      dir("/var/lib/jenkins/workspace/Maven_Test/target/") {
           dockerImage = docker.build registry + ":demo$BUILD_NUMBER"
           }
-		  sh 'mkdir  -p /var/lib/jenkins/workspace/Maven_Test/target/report/${BUILD_NUMBER}'
-		  sh 'trivy image --security-checks vuln,config --vuln-type os,library --ignore-unfixed --format template --template "@/usr/local/share/trivy/templates/html.tpl" -o /var/lib/jenkins/workspace/Maven_Test/target/report/${BUILD_NUMBER}.html ananthdevulapalli/web:demo$BUILD_NUMBER'
+		  /*sh 'mkdir  -p /var/lib/jenkins/workspace/Maven_Test/target/report/${BUILD_NUMBER}'
+		  sh 'trivy image --security-checks vuln,config --vuln-type os,library --ignore-unfixed --format template --template "@/usr/local/share/trivy/templates/html.tpl" -o /var/lib/jenkins/workspace/Maven_Test/target/report/${BUILD_NUMBER}.html ananthdevulapalli/web:demo$BUILD_NUMBER' */
           docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
           }
