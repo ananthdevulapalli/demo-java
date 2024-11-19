@@ -22,7 +22,7 @@ pipeline {
         stage('Copy docker file') {
             steps {
                 sh 'cp Dockerfile /var/lib/jenkins/workspace/Maven_Test/target/'
-                #sh 'mkdir /var/lib/jenkins/workspacae/Maven_Test/target/report'
+                /*sh 'mkdir /var/lib/jenkins/workspacae/Maven_Test/target/report' */
             }
         }
 
